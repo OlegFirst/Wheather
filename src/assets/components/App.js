@@ -6,6 +6,7 @@ import './../scss/index.scss';
 import Home from './Home';
 import TableLayout from './TableLayout';
 import GraphicLayout from './GraphicLayout';
+import ErrorMessage from './ErrorMessage';
 
 class App extends React.Component {
 	constructor(props) {
@@ -37,6 +38,7 @@ class App extends React.Component {
 						<Route path="/table-layout" component={TableLayout} />
 						<Route path="/graphic-layout" component={GraphicLayout} />
 					</section>
+					<ErrorMessage />
 				</div>
 			</Router>
 		)
