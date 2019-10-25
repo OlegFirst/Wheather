@@ -11,11 +11,17 @@ export default class ErrorMessage extends React.Component {
 	}
 	
 	render() {
-		if (this.props.text !== "") {
+		console.log(this.props.text);
+		if (this.props.text === null) {
 			return null;
 		}
 		return (
-			<p>ERROR</p>
+			<div className="error-message">
+				<div className="error-message__container">
+					<h2>{this.props.text}</h2>
+					<button type="button" onClick={this.handleSubmit}>OK</button>
+				</div>
+			</div>
 		)
 	}
 }

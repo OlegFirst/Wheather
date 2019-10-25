@@ -16,4 +16,19 @@ function dailyForecast() {
 	})
 }
 
-export { dailyForecast }
+function hourlyForecast() {
+	axios.get('http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/324505', {
+		params: {
+			apikey: API_KEY
+		}
+	})
+	.then((res) => {
+		console.log(res.data);
+		console.log(res.data.DateTime);
+	})
+	.catch((err) => {
+		console.log(err);
+	})
+}
+
+export { dailyForecast, hourlyForecast };

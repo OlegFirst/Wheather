@@ -11,6 +11,16 @@ import ErrorMessage from './ErrorMessage';
 class App extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			errorMessage: null
+		}
+		this.messageHandler = this.messageHandler.bind(this);
+	}
+	
+	messageHandler() {
+		this.setState({
+			errorMessage: null
+		});
 	}
 	
 	render() {
@@ -38,7 +48,7 @@ class App extends React.Component {
 						<Route path="/table-layout" component={TableLayout} />
 						<Route path="/graphic-layout" component={GraphicLayout} />
 					</section>
-					<ErrorMessage />
+					<ErrorMessage text={this.state.errorMessage} callBack={this.messageHandler} />
 				</div>
 			</Router>
 		)
