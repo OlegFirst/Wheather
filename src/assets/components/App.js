@@ -1,7 +1,7 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import 'reset-css';
 import './../scss/index.scss';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class App extends React.Component {
 	constructor(props) {
@@ -13,14 +13,15 @@ class App extends React.Component {
 			<Router>
 				<div className="application">
 					<header className="application__header">
-						<h1>Wheather APP</h1>
+						Weather APP
 					</header>
 					<nav className="application__nav nav">
-						Nav
+						<ul className="nav__items">
+							<li className="nav__items">Home</li>
+							<li className="nav__items">Table Layout</li>
+							<li className="nav__items">Graph layout</li>
+						</ul>
 					</nav>
-					<section className="application__container container">
-						Section
-					</section>
 				</div>
 			</Router>
 		)
