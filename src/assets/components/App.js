@@ -17,7 +17,7 @@ class App extends React.Component {
 			<Router>
 				<div className="application">
 					<header className="application__header">
-						Weather APP
+						<Link to="/">Weather APP</Link>
 					</header>
 					<nav className="application__nav nav">
 						<ul className="nav__items">
@@ -27,7 +27,9 @@ class App extends React.Component {
 							<li className="nav__item">
 								<Link to="/table-layout">Table Layout</Link>
 							</li>
-							<li className="nav__item">Graphic layout</li>
+							<li className="nav__item">
+								<Link to="/graphic-layout">Graphic layout</Link>
+							</li>
 						</ul>
 					</nav>				
 					<section className="application__container">

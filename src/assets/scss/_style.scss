@@ -6,14 +6,18 @@
 	
 	&__header {
 		background-color: $header-color;
-		color: $header-text-color;		
+		//color: $header-text-color;		
 		padding: 20px;
 		font-size: 24px;
+		
+		&>a {
+			color: $header-text-color !important;
+			text-decoration: none;
+		}
 	}
 	
 	.nav {
-		background-color: $navigation-color;
-		color: $navigation-text-color;
+		background-color: $navigation-color;		
 		width: 100%;
 		box-sizing: border-box;
 		padding: 10px 0px 10px 20px;
@@ -29,6 +33,11 @@
 			
 			&:first-child {
 				margin-left: 0px;
+			}
+			
+			&>a {
+				color: $navigation-text-color !important;
+				text-decoration: none;
 			}
 		}
 	}
