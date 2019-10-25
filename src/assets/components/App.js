@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import 'reset-css';
 import './../scss/index.scss';
 
+import Home from './Home';
+import TableLayout from './TableLayout';
+import GraphicLayout from './GraphicLayout';
+
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -17,11 +21,20 @@ class App extends React.Component {
 					</header>
 					<nav className="application__nav nav">
 						<ul className="nav__items">
-							<li className="nav__items">Home</li>
-							<li className="nav__items">Table Layout</li>
-							<li className="nav__items">Graph layout</li>
+							<li className="nav__item">
+								<Link to="/">Home</Link>
+							</li>
+							<li className="nav__item">
+								<Link to="/table-layout">Table Layout</Link>
+							</li>
+							<li className="nav__item">Graphic layout</li>
 						</ul>
-					</nav>
+					</nav>				
+					<section className="application__container">
+						<Route exact path="/" component={Home} />
+						<Route path="/table-layout" component={TableLayout} />
+						<Route path="/graphic-layout" component={GraphicLayout} />
+					</section>
 				</div>
 			</Router>
 		)
