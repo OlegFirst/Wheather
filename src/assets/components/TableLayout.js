@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { dailyForecast } from './GetForecasts';
 
-function TableLayout() {
+export default function TableLayout() {
+	//let [matrix, setMatrix] = useState({})
+	
+	useEffect(() => {
+		dailyForecast();
+	});
+	
 	return (
 		<div className="table">
 			<h1>
@@ -9,5 +16,3 @@ function TableLayout() {
 		</div>
 	)
 }
-
-export default TableLayout;
