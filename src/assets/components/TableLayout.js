@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { dailyForecast, hourlyForecast } from './GetForecasts';
+import { store } from '../redux/storage';
 
-export default function TableLayout() {
-	//let [matrix, setMatrix] = useState({})
+export default function TableLayout(props) {
+	//console.log(props);
+	
+	
+	let [matrix, setMatrix] = useState({})
 	
 	useEffect(() => {
-		dailyForecast();
-		//hourlyForecast();
+		//console.log(store.getState().items);
 	});
 	
 	return (

@@ -8,6 +8,12 @@ import TableLayout from './TableLayout';
 import GraphicLayout from './GraphicLayout';
 import ErrorMessage from './ErrorMessage';
 
+import { store } from '../redux/storage';
+import {
+	getDailyForecasts,
+	getHourlyForecasts
+} from '../redux/actions';
+
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -15,6 +21,14 @@ class App extends React.Component {
 			errorMessage: null
 		}
 		this.messageHandler = this.messageHandler.bind(this);
+	}
+	
+	componentDidMount() {
+		//store.dispatch(getDailyForecasts());
+		store.dispatch(getHourlyForecasts());
+		console.log(store.getState());
+		this.setState({data: store.getState()});
+		console.log(this.state);
 	}
 	
 	messageHandler() {
@@ -45,8 +59,8 @@ class App extends React.Component {
 					</nav>				
 					<section className="application__container">
 						<Route exact path="/" component={Home} />
-						<Route path="/table-layout" component={TableLayout} />
-						<Route path="/graphic-layout" component={GraphicLayout} />
+						<Route path="/table-layout" render={(props) => <TableLayout {...props} one={true} />} />
+						<Route path="/graphic-layout" render={(props) => <GraphicLayout {...props} hourly={false} />} />
 					</section>
 					<ErrorMessage text={this.state.errorMessage} callBack={this.messageHandler} />
 				</div>

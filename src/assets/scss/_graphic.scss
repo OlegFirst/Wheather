@@ -1,0 +1,15 @@
+.graphic {
+	&__title {
+		margin: 30px 0;
+		text-align: center;
+	}
+
+	&__canvas {
+		display: block;
+		border-radius: 10px;
+		background-color: $canvas-color;
+		width: 200px;
+		height: 200px;
+		margin: 0 auto;
+	}
+}

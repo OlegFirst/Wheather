@@ -1,34 +1,35 @@
 const axios = require('axios');
 const API_KEY = 'ct3yQyWGh3XvJ65VhxrmBblN0mESBu2l';
 
-// Get 5 days of daily forecast for Kyiv
-function dailyForecast() {
+function dailyForecasts(callBack) {
 	axios.get('http://dataservice.accuweather.com/forecasts/v1/daily/5day/324505', {
+		headers: {
+			'Access-Control-Allow-Origin': '*'
+		},
 		params: {
 			apikey: API_KEY
 		}
 	})
 	.then((res) => {
-		console.log(res.data.DailyForecasts);
+		return callBack({isSuccess: true, data: res});
 	})
 	.catch((err) => {
-		console.log(err);
+		return callBack({isSuccess:false, data: null});
 	})
 }
 
-function hourlyForecast() {
+function hourlyForecasts() {
 	axios.get('http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/324505', {
 		params: {
 			apikey: API_KEY
 		}
 	})
 	.then((res) => {
-		console.log(res.data);
-		console.log(res.data.DateTime);
+		return callBack({isSuccess:true, data: res});
 	})
 	.catch((err) => {
-		console.log(err);
+		return callBack({isSuccess:false, data: res});
 	})
 }
 
-export { dailyForecast, hourlyForecast };
+export { dailyForecasts, hourlyForecasts };
