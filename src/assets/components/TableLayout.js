@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { store } from '../redux/storage';
 
 export default function TableLayout(props) {
-	//console.log(props);
+	console.log(props.data);
 	
 	
 	let [matrix, setMatrix] = useState({})

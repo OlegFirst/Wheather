@@ -13,22 +13,24 @@ import {
 	getDailyForecasts,
 	getHourlyForecasts
 } from '../redux/actions';
+import { probaAction } from '../redux/actions';
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			data: {
+				dailyForecasts: null
+			},
 			errorMessage: null
 		}
 		this.messageHandler = this.messageHandler.bind(this);
 	}
 	
 	componentDidMount() {
-		//store.dispatch(getDailyForecasts());
-		store.dispatch(getHourlyForecasts());
-		console.log(store.getState());
-		this.setState({data: store.getState()});
-		console.log(this.state);
+		store.dispatch(getDailyForecasts());
+		store.dispatch(getHourlyForecasts());		
+		store.subscribe(() => this.setState({data: store.getState()}));
 	}
 	
 	messageHandler() {
@@ -59,7 +61,7 @@ class App extends React.Component {
 					</nav>				
 					<section className="application__container">
 						<Route exact path="/" component={Home} />
-						<Route path="/table-layout" render={(props) => <TableLayout {...props} one={true} />} />
+						<Route path="/table-layout" render={(props) => <TableLayout {...props} data={this.state.data.dailyForecasts} />} />
 						<Route path="/graphic-layout" render={(props) => <GraphicLayout {...props} hourly={false} />} />
 					</section>
 					<ErrorMessage text={this.state.errorMessage} callBack={this.messageHandler} />
