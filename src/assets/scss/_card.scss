@@ -1,0 +1,24 @@
+.card {
+	display: flex;
+	background-color: $card-color;
+	color: $card-text-color;
+	width: 80px;
+	height: 100px;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: start;
+	padding: 10px;
+	margin: 1px;	
+	animation-name: fadeIn;
+	animation-duration: 4s;
+	
+	@keyframes fadeIn {
+		from {transform: scale(0, 0);}
+		to {transform: scale(1, 1);}
+	}
+	
+	&__average-temperature {
+		margin-top: 10px;
+		font-size: 12px;
+	}
+}

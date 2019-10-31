@@ -1,0 +1,19 @@
+.table {
+	margin-bottom: 50px;
+
+	&__title {
+		margin: 30px 0;
+		text-align: center;
+	}
+	
+	&__part {
+		text-align: left;
+		margin: 60px 0 20px 0;
+	}
+	
+	&__box {
+		@include flex();
+		flex-wrap: wrap;
+		justify-content: start;
+	}
+}

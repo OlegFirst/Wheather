@@ -1,0 +1,35 @@
+.canvas {
+	&__container {
+		position: absolute;
+		display: block;
+		background-color: $canvas-color;
+		left: 20px;
+		top: 10px;
+		box-shadow: 5px 5px 5px grey;
+	}
+	
+	&__wrapper {
+		position: relative;
+		display: inline-block;
+		background-color: $canvas-color;
+		width: 150px;
+		height: 130px;
+	}
+	
+	&__message-temperature {
+		position: absolute;
+		color: $text-color;
+		font-size: 12px;
+		transform: rotate(-90deg);
+		left: -29px;
+		top: 60px;
+	}
+	
+	&__message-time {
+		position: absolute;
+		color: $text-color;
+		font-size: 12px;
+		left: 30px;
+		top: 114px;
+	}
+}

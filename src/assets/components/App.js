@@ -2,40 +2,37 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import 'reset-css';
 import './../scss/index.scss';
-
 import Home from './Home';
-import TableLayout from './TableLayout';
-import GraphicLayout from './GraphicLayout';
-import ErrorMessage from './ErrorMessage';
-
+import TableLayout from './tableLayout/TableLayout';
+import GraphicLayout from './graphicLayout/GraphicLayout';
 import { store } from '../redux/storage';
 import {
 	getDailyForecasts,
-	getHourlyForecasts
+	getHourlyForecasts,
+	getDailyForecastsAPI,
+	getHourlyForecastsAPI
 } from '../redux/actions';
-import { probaAction } from '../redux/actions';
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			data: {
-				dailyForecasts: null
-			},
-			errorMessage: null
+				dailyForecasts: null,
+				hourlyForecasts: null
+			}
 		}
-		this.messageHandler = this.messageHandler.bind(this);
 	}
 	
 	componentDidMount() {
-		store.dispatch(getDailyForecasts());
-		store.dispatch(getHourlyForecasts());		
-		store.subscribe(() => this.setState({data: store.getState()}));
-	}
-	
-	messageHandler() {
-		this.setState({
-			errorMessage: null
+		// Get forecasts from API
+		store.dispatch(getDailyForecastsAPI());
+		store.dispatch(getHourlyForecastsAPI());
+		// Get forecasts from FILE
+		// store.dispatch(getDailyForecasts());
+		// store.dispatch(getHourlyForecasts());		
+		store.subscribe(() => {
+			this.setState({data: store.getState()});
 		});
 	}
 	
@@ -55,16 +52,15 @@ class App extends React.Component {
 								<Link to="/table-layout">Table Layout</Link>
 							</li>
 							<li className="nav__item">
-								<Link to="/graphic-layout">Graphic layout</Link>
+								<Link to="/graphic-layout">Graphic Layout</Link>
 							</li>
 						</ul>
 					</nav>				
 					<section className="application__container">
 						<Route exact path="/" component={Home} />
-						<Route path="/table-layout" render={(props) => <TableLayout {...props} data={this.state.data.dailyForecasts} />} />
-						<Route path="/graphic-layout" render={(props) => <GraphicLayout {...props} hourly={false} />} />
+						<Route path="/table-layout" render={(props) => <TableLayout {...props} data={this.state.data} />} />
+						<Route path="/graphic-layout" render={(props) => <GraphicLayout {...props} data={this.state.data} />} />
 					</section>
-					<ErrorMessage text={this.state.errorMessage} callBack={this.messageHandler} />
 				</div>
 			</Router>
 		)

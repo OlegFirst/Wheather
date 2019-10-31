@@ -1,35 +1,32 @@
 const axios = require('axios');
 const API_KEY = 'ct3yQyWGh3XvJ65VhxrmBblN0mESBu2l';
 
-function dailyForecasts(callBack) {
-	axios.get('http://dataservice.accuweather.com/forecasts/v1/daily/5day/324505', {
-		headers: {
-			'Access-Control-Allow-Origin': '*'
-		},
+function fetchDailyForecastsAPI() {
+	axios.get('http://dataservice.accuweather.com/forecasts/v1/daily/5day/324505', {		
 		params: {
 			apikey: API_KEY
 		}
 	})
 	.then((res) => {
-		return callBack({isSuccess: true, data: res});
+		console.log(res.data.DailyForecasts);
 	})
 	.catch((err) => {
-		return callBack({isSuccess:false, data: null});
+		console.log(err);
 	})
 }
 
-function hourlyForecasts() {
+function fetchHourlyForecastsAPI() {
 	axios.get('http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/324505', {
 		params: {
 			apikey: API_KEY
 		}
 	})
 	.then((res) => {
-		return callBack({isSuccess:true, data: res});
+		console.log(res.data.DateTime);
 	})
 	.catch((err) => {
-		return callBack({isSuccess:false, data: res});
+		console.log(err);
 	})
 }
 
-export { dailyForecasts, hourlyForecasts };
+export { fetchDailyForecastsAPI, fetchHourlyForecastsAPI };

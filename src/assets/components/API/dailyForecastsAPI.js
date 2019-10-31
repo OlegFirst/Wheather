@@ -2,10 +2,7 @@ const axios = require('axios');
 const API_KEY = 'ct3yQyWGh3XvJ65VhxrmBblN0mESBu2l';
 
 function dailyForecast() {
-	axios.get('http://dataservice.accuweather.com/forecasts/v1/daily/5day/324505', {
-		headers: {
-			'Access-Control-Allow-Origin': '*'
-		},
+	axios.get('http://dataservice.accuweather.com/forecasts/v1/daily/5day/324505', {		
 		params: {
 			apikey: API_KEY
 		}

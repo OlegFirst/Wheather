@@ -1,32 +1,32 @@
 import {
 	INSERT_DAILY_FORECASTS,
-	DAILY_FORECASTS_PASSED,
-	INSERT_HOURLY_FORECASTS
+	INSERT_HOURLY_FORECASTS,
+	READING_ERROR
 } from './actions';
 
 const initialState = {
 	dailyForecasts: null,
-	isDailyForecastsPassed: false,
-	hourlyForecasts: []
+	hourlyForecasts: null,
+	isReadingError: false
 }
 
 export default function forecast(state = initialState, action) {
 	switch (action.type) {
-		case 'INSERT_DAILY_FORECASTS':		
+		case INSERT_DAILY_FORECASTS:		
 			return {
 				...state,
 				dailyForecasts: action.data
 			}
-		case 'INSERT_HOURLY_FORECASTS':
+		case INSERT_HOURLY_FORECASTS:
 			return {
 				...state,
 				hourlyForecasts: action.data
 			}
-		case 'DAILY_FORECASTS_PASSED': {
-			return state.hourlyForecasts = Object.assign({}, state, {
-				isDailyForecastsPassed: true
-			});
-		}
+		case READING_ERROR:
+			return {
+				...state,
+				isReadingError: true
+			}
 		default: return state;
 	}
 }
